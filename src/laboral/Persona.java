@@ -1,6 +1,6 @@
 package laboral;
 
-public class Persona implements ICostantes {
+public class Persona implements Nomina {
 
 
 	public String sNombre;
