@@ -167,8 +167,8 @@ public class CalculaNominas {
 	private static void datosTrabajadores(Empleado oEmpleado1, Empleado oEmpleado2) {
 		String sSueldo = "  --Sueldo : ";
 		System.out.println(oEmpleado1.imprimeEmpleado(oEmpleado1));
-		System.out.println(sSueldo + oEmpleado1.sueldo(oEmpleado1));
+		System.out.println(sSueldo + Nomina.sueldo(oEmpleado1));
 		System.out.println(oEmpleado2.imprimeEmpleado(oEmpleado2));
-		System.out.println(sSueldo + oEmpleado2.sueldo(oEmpleado2));
+		System.out.println(sSueldo + Nomina.sueldo(oEmpleado2));
 	}
 }
