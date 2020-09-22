@@ -31,6 +31,10 @@ public class Empleado extends Persona {
 		setbAnyosTrabajados(bAnyosTrabajados);
 	}
 
+	public Empleado(String sDni) {
+		super(sDni);
+	}
+
 	/**
 	 * 
 	 * @return tipo: Byte

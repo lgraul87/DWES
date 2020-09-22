@@ -31,6 +31,10 @@ public class Persona implements Nomina {
 		setcLetra(cLetra);
 	}
 
+	public Persona(String sDni) {
+		setsDni(sDni);
+	}
+
 	/**
 	 * 
 	 * @return tipo: String
