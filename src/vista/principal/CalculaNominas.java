@@ -1,10 +1,14 @@
-package laboral;
+package vista.principal;
 
+import controlador.database.GeneralController;
 import laboral.Empleado;
+import laboral.Nomina;
 import lib.L;
+import vista.empleado.AltaEmpleadoView;
 
 public class CalculaNominas {
-
+	public static GeneralController controlGeneral = new GeneralController("raulbase");
+	
 	public static void main(String[] args) {
 		/*
 		 * Se desea desarrollar una aplicación en Java para controlar las nóminas de los
@@ -78,7 +82,7 @@ public class CalculaNominas {
 		 * excepción. Deberás controlar las excepciones del sistema, así como documenta
 		 * convenientemente el código generando el Javadoc.
 		 */
-
+/*
 		byte bAnios;
 		byte bCategoria;
 		char cLetra = 0;
@@ -197,7 +201,7 @@ public class CalculaNominas {
 		oEmpleado1.setbCategoria(bCategoria);
 
 		datosTrabajadores(oEmpleado1, oEmpleado2);
-
+*/
 		/*
 		 * Partiendo de la aplicación en Java desarrollada en la prueba anterior para
 		 * controlar las nóminas de los empleados de una empresa, realizar los
@@ -206,7 +210,11 @@ public class CalculaNominas {
 		 * “empleados.txt” y escriba en un fichero binario “salarios.dat” el dni del
 		 * empleado junto con su sueldo calculado. Debes: 1.1. Definir el fichero de
 		 * texto de entrada “empleados.txt” creando en el mismos los empleados de los
-		 * apartados 4.1 y 4.2 con el formato más adecuado para que pueda ser leído por
+		 * apartados 4.1 y 
+		 * 
+		 * 
+		 * 
+		 * 4.2 con el formato más adecuado para que pueda ser leído por
 		 * el programa. Puedes incluir más empleados. 1.2. Actualizar dicho fichero
 		 * “empleados.txt” conforme a los cambios especificados en el apartado 4.5. 1.3.
 		 * Definir el fichero binario de salida “sueldos.dat” con el formato más
@@ -244,7 +252,63 @@ public class CalculaNominas {
 		 * código generando el Javadoc.
 		 */
 
-	}
+	
+
+	
+	start();
+}
+
+public static void start() {
+	
+	byte bOption = 0;
+	boolean errorContol = true;
+	do {
+		do {
+
+			try {
+				bOption = (byte) L.valida("\n\n"
+						//
+						+ "*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *"
+						//
+						+ "\n·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·"
+						//
+						+ "\n		BIENVENIDO GESTOR DE NOMINAS"
+						//
+						+ "\n·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·"
+						//
+						+ "\n*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *"
+						//
+						+ "\n"
+						//
+						+ "\n  --Operaciones de empleados:    	(1)"
+						//
+						+ "\n  --Salir:           		(2)"
+						//
+						, 1, 2, 3);
+
+				errorContol = false;
+
+			} catch (NumberFormatException e) {
+				System.out.println(e.getMessage());
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+
+		} while (errorContol);
+
+		//
+
+		if (bOption == 1) {
+			AltaEmpleadoView.seleccionOperaciones(controlGeneral);
+		
+
+		}
+	} while (bOption != 2);
+}
+
+
+
+
 
 	/**
 	 * 
