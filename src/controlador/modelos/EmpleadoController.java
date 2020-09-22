@@ -29,4 +29,19 @@ public class EmpleadoController {
 
 	}
 
+	public void upDateSalaryAll() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Empleado bringEmployee(Empleado oEmpleado) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void upDateSalary(Empleado oEmpleado, Empleado oEmpleadoEditado) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

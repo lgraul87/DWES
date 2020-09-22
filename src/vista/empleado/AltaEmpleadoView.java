@@ -287,12 +287,68 @@ public class AltaEmpleadoView {
 	}
 
 	private static void upDateSalaryAll(GeneralController controlGeneral) {
-		// TODO Auto-generated method stub
-
+		controlGeneral.getEmpleadoController().upDateSalaryAll();
 	}
 
 	private static void upDateSalary(GeneralController controlGeneral) {
-		// TODO Auto-generated method stub
+
+		byte bCategoria;
+		byte bAnios;
+
+		String sDni = L.leer("DNI (Empleado a modificar su categoria y anios):	");
+
+		boolean bError = true;
+		do {
+
+			try {
+				bCategoria = Byte.parseByte(L.leer("Introduzca Categoria (1 a 10): "));
+				if (bCategoria >= 1 && bCategoria <= 10) {
+					bError = false;
+				}
+			} catch (NumberFormatException e) {
+				System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
+				bCategoria = 0;
+				bError = false;
+			} catch (Exception e) {
+				System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
+				bCategoria = 0;
+				bError = false;
+			}
+
+		} while (bError);
+
+		bError = true;
+		do {
+
+			try {
+				bAnios = Byte.parseByte(L.leer("Introduzca Anios (1 a 80): "));
+				if (bAnios >= 1 && bAnios <= 80) {
+					bError = false;
+				}
+
+			} catch (NumberFormatException e) {
+				System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
+				bAnios = 0;
+				bError = false;
+			} catch (Exception e) {
+				System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
+				bAnios = 0;
+				bError = false;
+			}
+
+		} while (bError);
+
+		Empleado oEmpleado = new Empleado(sDni);
+
+		Empleado oEmpleadoEncontrado = controlGeneral.getEmpleadoController().bringEmployee(oEmpleado);
+
+		String sNombre = oEmpleadoEncontrado.getsNombre();
+		String sDniEncontrado = oEmpleadoEncontrado.getsDni();
+		char cLetra = oEmpleadoEncontrado.getcLetra();
+		byte bAnyosTrabajados = oEmpleadoEncontrado.getbAnyosTrabajados();
+		Empleado oEmpleadoEditado = new Empleado(sNombre, sDniEncontrado, cLetra, bAnyosTrabajados, bCategoria);
+
+		controlGeneral.getEmpleadoController().upDateSalary(oEmpleado, oEmpleadoEditado);
 
 	}
 }
