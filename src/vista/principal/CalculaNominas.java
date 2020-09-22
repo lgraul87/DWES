@@ -216,37 +216,73 @@ public class CalculaNominas {
 		 * 
 		 * 4.2 con el formato más adecuado para que pueda ser leído por
 		 * el programa. Puedes incluir más empleados. 1.2. Actualizar dicho fichero
-		 * “empleados.txt” conforme a los cambios especificados en el apartado 4.5. 1.3.
+		 * “empleados.txt” conforme a los cambios especificados en el apartado 4.5. 
+		 * 
+		 * 
+		 * 1.3.
 		 * Definir el fichero binario de salida “sueldos.dat” con el formato más
-		 * adecuado para almacenar el dni y el sueldo resultante para cada empleado. 2.
+		 * adecuado para almacenar el dni y el sueldo resultante para cada empleado. 
+		 * 
+		 * 
+		 * 2.
 		 * Modificar el código para que el programa lea la información necesaria de los
 		 * empleados desde una base de datos con, al menos, una tabla Empleados y una
-		 * tabla Nominas. Debes: 2.1. Definir e implementar el modelo de tablas y
+		 * tabla Nominas. Debes: 
+		 * 
+		 * 
+		 * 2.1. Definir e implementar el modelo de tablas y
 		 * relaciones necesarios para dar soporte a la aplicación de control de nóminas.
 		 * Definir en la tabla correspondiente de dicha base de datos los mismos los
 		 * empleados de los apartados 4.1 y 4.2 de la parte 1 para que pueda ser leído
-		 * por el programa. Puedes incluir más registros de empleados. 2.2. Actualizar
+		 * por el programa. Puedes incluir más registros de empleados. 
+		 * 
+		 * 
+		 * 2.2. Actualizar
 		 * dicha base de datos conforme a los cambios especificados en el apartado 4.5
 		 * de la parte 1. 2.3. Actualizar la base de datos almacenando el sueldo
-		 * resultante para cada empleado. 3. Modificar el código para crear un método
+		 * resultante para cada empleado. 3.
+		 * 
+		 *  
+		 *  Modificar el código para crear un método
 		 * “altaEmpleado” que permita dar de alta empleados en el sistema y que, de
 		 * forma automática, calcule y almacene el sueldo de los empleados en la base de
 		 * datos. 3.1. Sobrecargar el método “altaEmpleado” para que permita el alta de
 		 * empleados de forma individual o por lotes a partir de un fichero
 		 * “empleadosNuevos.txt” con los datos de los empleados a dar de alta en el
-		 * sistema. 4. Modificar el comportamiento de la aplicación para que use como
+		 * sistema. 4.
+		 * 
+		 *  
+		 *  
+		 *  Modificar el comportamiento de la aplicación para que use como
 		 * almacenamiento principal la base de datos previamente creada en el apartado
 		 * 7, y como almacenamiento secundario, a modo de backup, los ficheros de texto
 		 * y datos previamente creados en el apartado 1. 5. Crear un menú de opciones
-		 * para permitir al usuario: 5.1. Mostrar la información existente en la base de
+		 * para permitir al usuario: 5.1. 
+		 * 
+		 * 
+		 * Mostrar la información existente en la base de
 		 * datos de todos los empleados (nombre, dni, sexo, categoría y años
-		 * trabajados). 5.2. Mostrar el salario existente en la base de datos de un
-		 * empleado especificado por su dni. 5.3. Mostrar un submenú que permita
+		 * trabajados). 
+		 * 
+		 * 
+		 * 5.2. Mostrar el salario existente en la base de datos de un
+		 * empleado especificado por su dni. 
+		 * 
+		 * 
+		 * 5.3. Mostrar un submenú que permita
 		 * modificar todos los datos de los empleados almacenados en la base de datos.
+		 * 
+		 * 
+		 * 
 		 * El sueldo del empleado es un campo calculado y no es posible modificarlo,
 		 * debiendo actualizarse automáticamente al modificar la categoría o los años
-		 * trabajados de un empleado. 5.4. Recalcular y actualizar el sueldo de un
+		 * trabajados de un empleado. 
+		 * 
+		 * 
+		 * 5.4. Recalcular y actualizar el sueldo de un
 		 * empleado. 5.5. Recalcular y actualizar los sueldos de todos los empleados.
+		 * 
+		 * 
 		 * 5.6. Realizar una copia de seguridad de la base de datos en ficheros. Deberás
 		 * controlar las excepciones del sistema, así como documenta convenientemente el
 		 * código generando el Javadoc.
