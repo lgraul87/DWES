@@ -81,6 +81,20 @@ public class CalculaNominas {
 
 		byte bAnios;
 		byte bCategoria;
+		char cLetra = 0;
+		
+		
+		String sNombreEmpleado1 = L.leer("Nombre (Empleado 1): ");
+
+		String sDniEmpleado1 = L.leer("Dni (Empleado 1): ");
+
+		byte bOption = (byte) L.valida("Sexo: \nVaron: (1)\nMujer: (2)", 1, 2, 3);
+
+		if (bOption == 1) {
+			cLetra = 'H';
+		} else if (bOption == 2) {
+			cLetra = 'M';
+		}
 
 		boolean bError = true;
 		do {
@@ -121,8 +135,23 @@ public class CalculaNominas {
 
 		} while (bError);
 
-		Empleado oEmpleado1 = new Empleado("James Cosling", "32000032G", 'M', bAnios, bCategoria);
-		Empleado oEmpleado2 = new Empleado("Ada Lovelace", "32000031R", 'F');
+		Empleado oEmpleado1 = new Empleado(sNombreEmpleado1, sDniEmpleado1, cLetra, bAnios, bCategoria);
+
+		
+		String sNombreEmpleado2 = L.leer("Nombre (Empleado 2): ");
+
+		String sDniEmpleado2 = L.leer("Dni (Empleado 1): ");
+		
+		
+		 bOption = (byte) L.valida("Sexo: \nVaron: (1)\nMujer: (2)", 1, 2, 3);
+
+		if (bOption == 1) {
+			cLetra = 'H';
+		} else if (bOption == 2) {
+			cLetra = 'M';
+		}
+
+		Empleado oEmpleado2 = new Empleado(sNombreEmpleado2, sDniEmpleado2, cLetra);
 
 		datosTrabajadores(oEmpleado1, oEmpleado2);
 
