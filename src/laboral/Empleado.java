@@ -2,16 +2,14 @@ package laboral;
 
 public class Empleado extends Persona {
 
-	
-
 	private byte bCategoria;
 	private byte bAnyosTrabajados;
 
 	/**
 	 * 
 	 * @param sNombre tipo: String
-	 * @param sDni tipo: String
-	 * @param cLetra tipo: Char
+	 * @param sDni    tipo: String
+	 * @param cLetra  tipo: Char
 	 */
 	public Empleado(String sNombre, String sDni, char cLetra) {
 		super(sNombre, sDni, cLetra);
@@ -19,14 +17,13 @@ public class Empleado extends Persona {
 		this.bAnyosTrabajados = SIN_EXP;
 	}
 
-	
 	/**
 	 * 
-	 * @param sNombre tipo: String
-	 * @param sDni tipo: String
-	 * @param cLetra tipo: Char
+	 * @param sNombre          tipo: String
+	 * @param sDni             tipo: String
+	 * @param cLetra           tipo: Char
 	 * @param bAnyosTrabajados tipo: Byte
-	 * @param bCategoria tipo: Byte
+	 * @param bCategoria       tipo: Byte
 	 */
 	public Empleado(String sNombre, String sDni, char cLetra, byte bAnyosTrabajados, byte bCategoria) {
 		super(sNombre, sDni, cLetra);
@@ -124,6 +121,4 @@ public class Empleado extends Persona {
 				+ "\n  --Anyos trabajados: " + this.bAnyosTrabajados;
 	}
 
-	
-	
 }

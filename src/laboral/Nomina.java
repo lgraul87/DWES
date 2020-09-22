@@ -15,7 +15,7 @@ public interface Nomina {
 	public static final int SUELDO_BASE[] = { 50000, 70000, 90000, 110000, 130000, 150000, 170000, 190000, 210000,
 			230000 };
 
-	// MIN Y MAX DE CATEGORIAS Y ANIOS 
+	// MIN Y MAX DE CATEGORIAS Y ANIOS
 	public static final byte MIN_CATEGORIA = 1;
 	public static final byte MAX_CATEGORIA = 10;
 	public static final byte MIN_ANIOSTRABAJADOS = 1;
@@ -25,7 +25,7 @@ public interface Nomina {
 	public static final byte SIN_EXP = 0;
 	public static final byte ANYO_MAS_UNO = 1;
 	public static final short INCENTIVO_ANYO = 5000;
-	
+
 	/**
 	 * 
 	 * @param oEmpleado tipo: Empleado (Objeto)

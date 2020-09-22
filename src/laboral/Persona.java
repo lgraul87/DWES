@@ -2,7 +2,6 @@ package laboral;
 
 public class Persona implements Nomina {
 
-
 	public String sNombre;
 	public String sDni;
 	public char cLetra;
@@ -10,8 +9,8 @@ public class Persona implements Nomina {
 	/**
 	 * 
 	 * @param sNombre tipo: String
-	 * @param sDni tipo: String
-	 * @param cLetra tipo: Char
+	 * @param sDni    tipo: String
+	 * @param cLetra  tipo: Char
 	 */
 	public Persona(String sNombre, String sDni, char cLetra) {
 
@@ -21,11 +20,10 @@ public class Persona implements Nomina {
 
 	}
 
-	
 	/**
 	 * 
 	 * @param sNombre tipo: String
-	 * @param cLetra tipo: Char
+	 * @param cLetra  tipo: Char
 	 */
 	public Persona(String sNombre, char cLetra) {
 
@@ -33,10 +31,10 @@ public class Persona implements Nomina {
 		setcLetra(cLetra);
 	}
 
-/**
- * 
- * @return tipo: String
- */
+	/**
+	 * 
+	 * @return tipo: String
+	 */
 	public String getsNombre() {
 		return this.sNombre;
 	}
@@ -57,7 +55,6 @@ public class Persona implements Nomina {
 		return bValido;
 	}
 
-	
 	/**
 	 * 
 	 * @return tipo: String
@@ -66,10 +63,9 @@ public class Persona implements Nomina {
 		return this.sDni;
 	}
 
-	
-	
 	/**
 	 * MODIFICA EL DNI DE UNA PERSONA
+	 * 
 	 * @param sDni tipo: String
 	 * @return tipo: Boolean
 	 */
