@@ -139,8 +139,11 @@ public class CalculaNominas {
 		} while (bError);
 
 		Empleado oEmpleado1 = new Empleado(sNombreEmpleado1, sDniEmpleado1, cLetra, bAnios, bCategoria);
-
-		controlGeneral.getEmpleadoController().addEmployeeE(oEmpleado1);
+		if (oEmpleado1.validaEmpleado(oEmpleado1) && controlGeneral.getEmpleadoController().addEmployee(oEmpleado1)) {
+			System.out.println("Aniadido correctamente");
+		} else {
+			System.out.println("No se pudo aniadir");
+		}
 
 		String sNombreEmpleado2 = L.leer("Nombre (Empleado 2): ");
 
@@ -156,8 +159,11 @@ public class CalculaNominas {
 
 		Empleado oEmpleado2 = new Empleado(sNombreEmpleado2, sDniEmpleado2, cLetra);
 
-		controlGeneral.getEmpleadoController().addEmployeeNE(oEmpleado2);
-
+		if (oEmpleado2.validaEmpleado(oEmpleado2) && controlGeneral.getEmpleadoController().addEmployee(oEmpleado2)) {
+			System.out.println("Aniadido correctamente");
+		} else {
+			System.out.println("No se pudo aniadir");
+		}
 		datosTrabajadores(oEmpleado1, oEmpleado2);
 
 		bError = true;

@@ -128,7 +128,7 @@ public class AltaEmpleadoView {
 
 		Empleado oEmpleado = new Empleado(sNombreEmpleado, sDniEmpleado, cLetra, bAnios, bCategoria);
 
-		controlGeneral.getEmpleadoController().addEmployeeE(oEmpleado);
+		controlGeneral.getEmpleadoController().addEmployee(oEmpleado);
 	}
 
 	private static void addEmployeeNE(GeneralController controlGeneral) {
@@ -148,7 +148,7 @@ public class AltaEmpleadoView {
 		}
 
 		Empleado oEmpleado = new Empleado(sNombreEmpleado, sDniEmpleado, cLetra);
-		controlGeneral.getEmpleadoController().addEmployeeNE(oEmpleado);
+		controlGeneral.getEmpleadoController().addEmployee(oEmpleado);
 
 	}
 

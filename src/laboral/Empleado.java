@@ -125,4 +125,13 @@ public class Empleado extends Persona {
 				+ "\n  --Anyos trabajados: " + this.bAnyosTrabajados;
 	}
 
+	public boolean validaEmpleado(Empleado oEmpleado) {
+		boolean bValido = false;
+		if (this.sNombre != null && this.sDni != null && this.cLetra != 0 && this.bCategoria != -1) {
+			bValido = true;
+		}
+		return bValido;
+
+	}
+
 }
