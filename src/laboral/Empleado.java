@@ -48,15 +48,17 @@ public class Empleado extends Persona {
 	 * @param bCategoria tipo: Byte
 	 * @return tipo: Boolean
 	 */
-	public void setbCategoria(byte bCategoria) {
-
+	public boolean setbCategoria(byte bCategoria) {
+		boolean bExito = false;
 		if (bCategoria >= MIN_CATEGORIA && bCategoria <= MAX_CATEGORIA) {
 
 			this.bCategoria = bCategoria;
+			bExito = true;
 
 		} else {
 			this.bCategoria = -1;
 		}
+		return bExito;
 
 	}
 
