@@ -7,7 +7,7 @@ import lib.L;
 import vista.empleado.AltaEmpleadoView;
 
 public class CalculaNominas {
-	public static GeneralController controlGeneral = new GeneralController("raulbase");
+	public static GeneralController controlGeneral = new GeneralController("nomina");
 	
 	public static void main(String[] args) {
 		/*
