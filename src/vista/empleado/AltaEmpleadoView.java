@@ -59,15 +59,28 @@ public class AltaEmpleadoView {
 					//
 					+ "\n  --Empleado (Con Experiencia): 	(2)"
 					//
-					+ "\n  --Salir: (3)", 1, 3, 3);
+					+ "\n  --Empleado (Grupo): 	(3)"
+					//
+					+ "\n  --Salir: (4)", 1, 4, 3);
 			//
 
 			if (bOption == 1) {
 				addEmployeeNE(controlGeneral);
 			} else if (bOption == 2) {
 				addEmployeeE(controlGeneral);
+			} else if (bOption == 3) {
+				addGroup(controlGeneral);
 			}
 		} while (bOption != 3);
+	}
+
+	private static void addGroup(GeneralController controlGeneral) {
+
+		int iNumeroEmpleados = (byte) L.valida("Introduzca numero de empleados a registrar", 2, 30, 3);
+
+		for (int iContador = 0; iContador < iNumeroEmpleados; iContador++) {
+			addEmployeeE(controlGeneral);
+		}
 	}
 
 	private static void addEmployeeE(GeneralController controlGeneral) {
@@ -181,7 +194,7 @@ public class AltaEmpleadoView {
 	}
 
 	private static void showAll(GeneralController controlGeneral) {
-		controlGeneral.getEmpleadoController().showAll();
+		System.out.println(controlGeneral.getEmpleadoController().showAll());
 	}
 
 	private static void showEmployee(GeneralController controlGeneral) {
@@ -189,7 +202,7 @@ public class AltaEmpleadoView {
 
 		Empleado oEmpleado = new Empleado(sDni);
 
-		controlGeneral.getEmpleadoController().showEmployee(oEmpleado);
+		System.out.println(controlGeneral.getEmpleadoController().showEmployee(oEmpleado));
 
 	}
 
@@ -371,7 +384,7 @@ public class AltaEmpleadoView {
 		if (oEmpleadoEditado.setbCategoria(bCategoria)) {
 			controlGeneral.getEmpleadoController().upDateSalary(oEmpleado, oEmpleadoEditado);
 
-		}else {
+		} else {
 			System.out.println("No actualzado");
 		}
 
