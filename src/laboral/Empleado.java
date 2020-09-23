@@ -48,19 +48,15 @@ public class Empleado extends Persona {
 	 * @param bCategoria tipo: Byte
 	 * @return tipo: Boolean
 	 */
-	public boolean setbCategoria(byte bCategoria) {
-		boolean bValido = false;
+	public void setbCategoria(byte bCategoria) {
 
 		if (bCategoria >= MIN_CATEGORIA && bCategoria <= MAX_CATEGORIA) {
 
 			this.bCategoria = bCategoria;
-			bValido = true;
 
 		} else {
 			this.bCategoria = -1;
 		}
-
-		return bValido;
 
 	}
 
@@ -77,19 +73,15 @@ public class Empleado extends Persona {
 	 * @param bAnyosTrabajados tipo: Byte
 	 * @return tipo: Boolean
 	 */
-	public boolean setbAnyosTrabajados(byte bAnyosTrabajados) {
-		boolean bValido = false;
+	public void setbAnyosTrabajados(byte bAnyosTrabajados) {
 
 		if (bAnyosTrabajados >= MIN_ANIOSTRABAJADOS && bCategoria <= MAX_ANIOSTRABAJADOS) {
 
 			this.bAnyosTrabajados = bAnyosTrabajados;
-			bValido = true;
 
 		} else {
 			this.bAnyosTrabajados = -1;
 		}
-
-		return bValido;
 
 	}
 
@@ -127,7 +119,7 @@ public class Empleado extends Persona {
 
 	public boolean validaEmpleado(Empleado oEmpleado) {
 		boolean bValido = false;
-		if (this.sNombre != null && this.sDni != null && this.cLetra != 0 && this.bCategoria != -1) {
+		if (super.sNombre != null && super.sDni != null && super.cLetra != 0 && this.bCategoria != -1) {
 			bValido = true;
 		}
 		return bValido;

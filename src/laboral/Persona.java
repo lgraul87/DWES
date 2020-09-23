@@ -48,15 +48,12 @@ public class Persona implements Nomina {
 	 * @param sNombre tipo: String
 	 * @return Boolean
 	 */
-	public boolean setsNombre(String sNombre) {
-		boolean bValido = false;
+	public void setsNombre(String sNombre) {
 		if (sNombre != null && sNombre.length() >= MIN_STRING && sNombre.length() <= MAX_STRING_NOMBRE) {
 			this.sNombre = sNombre;
-			bValido = true;
 		} else {
 			this.sNombre = null;
 		}
-		return bValido;
 	}
 
 	/**
@@ -73,16 +70,13 @@ public class Persona implements Nomina {
 	 * @param sDni tipo: String
 	 * @return tipo: Boolean
 	 */
-	public boolean setsDni(String sDni) {
-		boolean bValido = false;
+	public void setsDni(String sDni) {
 		if (sDni != null && sDni.length() == 9) {
 			this.sDni = sDni;
-			bValido = true;
 		} else {
 			this.sDni = null;
 		}
 
-		return bValido;
 	}
 
 	/**
