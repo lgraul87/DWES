@@ -75,9 +75,9 @@ public class AltaEmpleadoView {
 		byte bCategoria;
 		char cLetra = 0;
 
-		String sNombreEmpleado1 = L.leer("Nombre (Empleado 1): ");
+		String sNombreEmpleado = L.leer("Nombre (Empleado 1): ");
 
-		String sDniEmpleado1 = L.leer("Dni (Empleado 1): ");
+		String sDniEmpleado = L.leer("Dni (Empleado 1): ");
 
 		byte bOption = (byte) L.valida("Sexo: \nVaron: (1)\nMujer: (2)", 1, 2, 3);
 
@@ -126,9 +126,9 @@ public class AltaEmpleadoView {
 
 		} while (bError);
 
-		Empleado oEmpleado1 = new Empleado(sNombreEmpleado1, sDniEmpleado1, cLetra, bAnios, bCategoria);
+		Empleado oEmpleado = new Empleado(sNombreEmpleado, sDniEmpleado, cLetra, bAnios, bCategoria);
 
-		controlGeneral.getEmpleadoController().addEmployeeE(oEmpleado1);
+		controlGeneral.getEmpleadoController().addEmployeeE(oEmpleado);
 	}
 
 	private static void addEmployeeNE(GeneralController controlGeneral) {
