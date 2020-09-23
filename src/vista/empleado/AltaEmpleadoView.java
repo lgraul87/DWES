@@ -346,9 +346,34 @@ public class AltaEmpleadoView {
 		String sDniEncontrado = oEmpleadoEncontrado.getsDni();
 		char cLetra = oEmpleadoEncontrado.getcLetra();
 		byte bAnyosTrabajados = oEmpleadoEncontrado.getbAnyosTrabajados();
+
+		bError = true;
+		do {
+			try {
+				bCategoria = Byte.parseByte(L.leer("Introduzca Categoria (1 a 10): "));
+				if (bCategoria >= 1 && bCategoria <= 10) {
+					bError = false;
+				}
+			} catch (NumberFormatException e) {
+				System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
+				bCategoria = 0;
+				bError = false;
+			} catch (Exception e) {
+				System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
+				bCategoria = 0;
+				bError = false;
+			}
+
+		} while (bError);
+
 		Empleado oEmpleadoEditado = new Empleado(sNombre, sDniEncontrado, cLetra, bAnyosTrabajados, bCategoria);
 
-		controlGeneral.getEmpleadoController().upDateSalary(oEmpleado, oEmpleadoEditado);
+		if (oEmpleadoEditado.setbCategoria(bCategoria)) {
+			controlGeneral.getEmpleadoController().upDateSalary(oEmpleado, oEmpleadoEditado);
+
+		}else {
+			System.out.println("No actualzado");
+		}
 
 	}
 }

@@ -44,7 +44,7 @@ public class EmpleadoController {
 		byte bCategoria = 0;
 		byte bAnios = 0;
 
-		String sql = "SELECT COUNT(*) FROM Proveedor;";
+		String sql = "SELECT COUNT(*) FROM EMPLEADO;";
 		if (ConexionDB.executeCount(sql) > 0) {
 
 			sResultado = "";
@@ -58,7 +58,7 @@ public class EmpleadoController {
 
 					sNombre = resultSet.getString("nombre");
 					sLetra = resultSet.getString("sexo");
-					sDni = resultSet.getString("correo");
+					sDni = resultSet.getString("dni");
 					bCategoria = resultSet.getByte("categoria");
 					bAnios = resultSet.getByte("anio");
 
@@ -87,7 +87,7 @@ public class EmpleadoController {
 
 		sDni = oEmpleado.getsDni();
 
-		String sql = "SELECT * FROM Proveedor WHERE nombre_proveedor = '" + sNombre + "';";
+		String sql = "SELECT * FROM EMPLEADO WHERE DNI = '" + sDni + "';";
 
 		try {
 			Statement statement = ConexionDB.getConnection().createStatement();
@@ -97,7 +97,7 @@ public class EmpleadoController {
 
 				sNombre = resultSet.getString("nombre");
 				sLetra = resultSet.getString("sexo");
-				sDni = resultSet.getString("correo");
+				sDni = resultSet.getString("dni");
 				bCategoria = resultSet.getByte("categoria");
 				bAnios = resultSet.getByte("anio");
 
@@ -115,23 +115,92 @@ public class EmpleadoController {
 		return sResultado;
 	}
 
-	public void editEmployee(Empleado oEmpleado, Empleado oEmpleadoModificado) {
-		// TODO Auto-generated method stub
+	public boolean editEmployee(Empleado oEmpleado, Empleado oEmpleadoModificado) {
+
+		boolean bExito = false;
+
+		String sDniBuscador = oEmpleado.getsDni();
+
+		String sql = "SELECT COUNT(*) FROM EMPLEADO WHERE DNI = '" + sDniBuscador + "' ";
+
+		if (ConexionDB.executeCount(sql) != 0) {
+
+			String sNombre = oEmpleadoModificado.getsNombre();
+			char cLetra = oEmpleadoModificado.getcLetra();
+			String sDni = oEmpleadoModificado.getsDni();
+			byte bCategoria = oEmpleadoModificado.getbCategoria();
+			byte bAnios = oEmpleadoModificado.getbAnyosTrabajados();
+
+			String sql2 = "INSERT INTO EMPLEADO VALUES ('" + sNombre + "'," + bCategoria + "," + bAnios + ",'" + sDni
+					+ "','" + cLetra + "')";
+
+			ConexionDB.executeUpdate(sql2);
+			bExito = true;
+
+		}
+		return bExito;
 
 	}
 
 	public void upDateSalaryAll() {
-		// TODO Auto-generated method stub
 
+		String sql = "UPDATE empleado SET anio = (SELECT anio FROM empleado)+1;";
+
+		ConexionDB.executeUpdate(sql);
 	}
 
 	public Empleado bringEmployee(Empleado oEmpleado) {
-		// TODO Auto-generated method stub
-		return null;
+
+		String sDni = oEmpleado.getsDni();
+
+		Empleado oEmpleadoBuscador = null;
+
+		String sql = "SELECT COUNT(*) FROM EMPLEADO WHERE DNI = '" + sDni + "'";
+
+		if (ConexionDB.executeCount(sql) != 0) {
+
+			String sql2 = "SELECT * FROM EMPLEADO WHERE DNI = '" + sDni + "'";
+
+			try {
+				Statement statement = ConexionDB.getConnection().createStatement();
+				ResultSet resultSet = statement.executeQuery(sql2);
+
+				while (resultSet.next()) {
+
+					String sNombre = resultSet.getString("nombre");
+					String sLetra = resultSet.getString("sexo");
+					sDni = resultSet.getString("dni");
+					byte bCategoria = resultSet.getByte("categoria");
+					byte bAnios = resultSet.getByte("anio");
+
+					char cLetra = sLetra.charAt(0);
+
+					oEmpleadoBuscador = new Empleado(sNombre, sDni, cLetra, bAnios, bCategoria);
+				}
+				resultSet.close();
+				statement.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			return oEmpleadoBuscador;
+		}
+		return oEmpleadoBuscador;
 	}
 
-	public void upDateSalary(Empleado oEmpleado, Empleado oEmpleadoEditado) {
-		// TODO Auto-generated method stub
+	public boolean upDateSalary(Empleado oEmpleado, Empleado oEmpleadoEditado) {
+
+		boolean bExito = false;
+		
+		String sDniBuscador = oEmpleado.getsDni();
+
+		String sql = "SELECT COUNT(*) FROM EMPLEADO WHERE DNI = '" + sDniBuscador + "'";
+
+		if (ConexionDB.executeCount(sql) != 0) {
+
+		}
+		return bExito;
 
 	}
 
