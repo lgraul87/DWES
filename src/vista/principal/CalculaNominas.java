@@ -307,7 +307,7 @@ public class CalculaNominas {
 							//
 							+ "\n·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·"
 							//
-							+ "\n		BIENVENIDO GESTOR DE NOMINAS"
+							+ "\n		BIENVENIDO AL GESTOR DE NOMINAS"
 							//
 							+ "\n·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·"
 							//
