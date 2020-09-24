@@ -2,7 +2,7 @@ package controlador.database;
 
 import controlador.modelos.EmpleadoController;
 
-public class GeneralController {
+public class GeneralController implements IGeneralController{
 
 	private ConexionDB conexionDB;
 	private EmpleadoController empleadoController;
@@ -14,10 +14,13 @@ public class GeneralController {
 
 	}
 
+	@Override
 	public ConexionDB getConexionDB() {
 		return this.conexionDB;
 	}
 
+	
+	@Override
 	public EmpleadoController getEmpleadoController() {
 		return this.empleadoController;
 	}

@@ -5,10 +5,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import controlador.database.ConexionDB;
-import laboral.Empleado;
 
-public class EmpleadoController {
+import modelo.laboral.Empleado;
 
+public class EmpleadoController implements IEmpleadoController{
+
+	@Override
 	public boolean addEmployee(Empleado oEmpleado1) {
 
 		boolean bExito = false;
@@ -34,6 +36,7 @@ public class EmpleadoController {
 
 	}
 
+	@Override
 	public String showAll() {
 
 		String sResultado = "No hay Empleados";
@@ -76,6 +79,7 @@ public class EmpleadoController {
 
 	}
 
+	@Override
 	public String showEmployee(Empleado oEmpleado) {
 		String sResultado = null;
 
@@ -115,6 +119,7 @@ public class EmpleadoController {
 		return sResultado;
 	}
 
+	@Override
 	public boolean editEmployee(Empleado oEmpleado, Empleado oEmpleadoModificado) {
 
 		boolean bExito = false;
@@ -142,6 +147,7 @@ public class EmpleadoController {
 
 	}
 
+	@Override
 	public void upDateSalaryAll() {
 
 		String sql = "UPDATE empleado SET anio = (SELECT anio FROM empleado)+1;";
@@ -149,6 +155,7 @@ public class EmpleadoController {
 		ConexionDB.executeUpdate(sql);
 	}
 
+	@Override
 	public Empleado bringEmployee(Empleado oEmpleado) {
 
 		String sDni = oEmpleado.getsDni();
@@ -189,6 +196,7 @@ public class EmpleadoController {
 		return oEmpleadoBuscador;
 	}
 
+	@Override
 	public boolean upDateSalary(Empleado oEmpleado, Empleado oEmpleadoEditado) {
 
 		boolean bExito = false;

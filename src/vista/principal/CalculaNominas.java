@@ -1,10 +1,11 @@
 package vista.principal;
 
 import controlador.database.GeneralController;
-import laboral.Empleado;
-import laboral.Nomina;
 import lib.L;
 import vista.empleado.AltaEmpleadoView;
+import modelo.laboral.Empleado;
+import modelo.laboral.Nomina;
+
 
 public class CalculaNominas {
 	public static GeneralController controlGeneral = new GeneralController("nomina");

@@ -1,8 +1,9 @@
 package vista.empleado;
 
 import controlador.database.GeneralController;
-import laboral.Empleado;
 import lib.L;
+import modelo.laboral.Empleado;
+
 
 public class AltaEmpleadoView {
 

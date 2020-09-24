@@ -2,7 +2,7 @@ package controlador.database;
 
 import java.sql.*;
 
-public class ConexionDB {
+public class ConexionDB implements IConexionDB {
 	private String host = "127.0.0.1";
 	private String port = "3306";
 	private String user = "root";
@@ -17,13 +17,13 @@ public class ConexionDB {
 	}
 
 	public ConexionDB(String database) {
-		
-		this.database= database;
+
+		this.database = database;
 		this.url = pattern + this.database;
 
 		// Registramos el Driver
 		try {
-		    Class.forName("org.mariadb.jdbc.Driver");
+			Class.forName("org.mariadb.jdbc.Driver");
 		} catch (ClassNotFoundException ex) {
 			System.out.println("Error¡¡ al registrar el driver de MariaDB: " + ex);
 		}
@@ -32,6 +32,7 @@ public class ConexionDB {
 		connectDataBase(url);
 	}
 
+	@Override
 	public void connectDataBase(String url) {
 		try {
 			connectionDb = DriverManager.getConnection(url, user, password);
@@ -41,6 +42,10 @@ public class ConexionDB {
 		}
 	}
 
+	/**
+	 * checkConnectionDatabase
+	 * @return tipo: boolean
+	 */
 	public static boolean checkConnectionDatabase() {
 		boolean bConnected;
 		try {
@@ -52,6 +57,9 @@ public class ConexionDB {
 		return bConnected;
 	}
 
+	/**
+	 * disconnectDatabase
+	 */
 	public static void disconnectDatabase() {
 		try {
 			connectionDb.close();
@@ -60,10 +68,19 @@ public class ConexionDB {
 		}
 	}
 
+	/**
+	 * getConnection
+	 * @return tipo: Connection
+	 */
 	public static Connection getConnection() {
 		return connectionDb;
 	}
 
+	/**
+	 * executeCount
+	 * @param sql tipo: String
+	 * @return tipo: int
+	 */
 	public static int executeCount(String sql) {
 		Statement stm = null;
 		ResultSet rs = null;
@@ -84,6 +101,11 @@ public class ConexionDB {
 		return iCount;
 	}
 
+	/**
+	 * executeUpdate
+	 * @param sql tipo: String
+	 * @return tipo: int
+	 */
 	public static int executeUpdate(String sql) {
 		Statement stm = null;
 		int iCount = 0;
