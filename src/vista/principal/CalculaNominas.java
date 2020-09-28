@@ -84,7 +84,7 @@ public class CalculaNominas {
 		 * convenientemente el código generando el Javadoc.
 		 */
 
-		// Gitignore 3
+		// Gitignore 4
 		byte bAnios;
 		byte bCategoria;
 		char cLetra = 0;
