@@ -4,7 +4,6 @@ import controlador.database.GeneralController;
 import lib.L;
 import vista.empleado.AltaEmpleadoView;
 import modelo.laboral.Empleado;
-import modelo.laboral.Nomina;
 
 
 public class CalculaNominas {
@@ -60,7 +59,7 @@ public class CalculaNominas {
 		 * 
 		 */
 		/**
-		 * #################################################3
+		 * #################################################
 		 */
 
 		/*
@@ -84,132 +83,195 @@ public class CalculaNominas {
 		 * convenientemente el código generando el Javadoc.
 		 */
 
-		// Gitignore 
-		byte bAnios;
-		byte bCategoria;
-		char cLetra = 0;
+		
+		byte bOption = entrada();
+		
+		if (bOption ==1) {
+			start();
+		}else if (bOption==2) {
+			boolean bMostrarPM1=false;
+			boolean bMostrarPM2=false;
+			// Gitignore 
+			byte bAnios;
+			byte bCategoria;
+			char cLetra = 0;
 
-		String sNombreEmpleado1 = L.leer("Nombre (Empleado 1): ");
+			String sNombreEmpleado1 = L.leer("Nombre (Empleado 1): ");
 
-		String sDniEmpleado1 = L.leer("Dni (Empleado 1): ");
+			String sDniEmpleado1 = L.leer("Dni (Empleado 1): ");
 
-		byte bOption = (byte) L.valida("Sexo: \nVaron: (1)\nMujer: (2)", 1, 2, 3);
+			bOption = (byte) L.valida("Sexo: \nVaron: (1)\nMujer: (2)", 1, 2, 3);
 
-		if (bOption == 1) {
-			cLetra = 'H';
-		} else if (bOption == 2) {
-			cLetra = 'M';
-		}
+			if (bOption == 1) {
+				cLetra = 'H';
+			} else if (bOption == 2) {
+				cLetra = 'M';
+			}
 
-		boolean bError = true;
-		do {
-			try {
-				bAnios = Byte.parseByte(L.leer("Introduzca Anios (1 a 80): "));
-				if (bAnios >= 1 && bAnios <= 80) {
+			boolean bError = true;
+			do {
+				try {
+					bAnios = Byte.parseByte(L.leer("Introduzca Anios (1 a 80): "));
+					if (bAnios >= 1 && bAnios <= 80) {
+						bError = false;
+					}
+
+				} catch (NumberFormatException e) {
+					System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
+					bAnios = 0;
+					bError = false;
+				} catch (Exception e) {
+					System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
+					bAnios = 0;
 					bError = false;
 				}
 
-			} catch (NumberFormatException e) {
-				System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
-				bAnios = 0;
-				bError = false;
-			} catch (Exception e) {
-				System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
-				bAnios = 0;
-				bError = false;
-			}
+			} while (bError);
 
-		} while (bError);
-
-		bError = true;
-		do {
-			try {
-				bCategoria = Byte.parseByte(L.leer("Introduzca Categoria (1 a 10): "));
-				if (bCategoria >= 1 && bCategoria <= 10) {
+			bError = true;
+			do {
+				try {
+					bCategoria = Byte.parseByte(L.leer("Introduzca Categoria (1 a 10): "));
+					if (bCategoria >= 1 && bCategoria <= 10) {
+						bError = false;
+					}
+				} catch (NumberFormatException e) {
+					System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
+					bCategoria = 0;
+					bError = false;
+				} catch (Exception e) {
+					System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
+					bCategoria = 0;
 					bError = false;
 				}
-			} catch (NumberFormatException e) {
-				System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
-				bCategoria = 0;
-				bError = false;
-			} catch (Exception e) {
-				System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
-				bCategoria = 0;
-				bError = false;
+
+			} while (bError);
+
+			Empleado oEmpleado1 = new Empleado(sNombreEmpleado1, sDniEmpleado1, cLetra, bAnios, bCategoria);
+			if (oEmpleado1.validaEmpleado(oEmpleado1) && controlGeneral.getEmpleadoController().addEmployee(oEmpleado1)) {
+				System.out.println("Aniadido correctamente");
+				bMostrarPM1 = true;
+			} else {
+				System.out.println("No se pudo aniadir");
 			}
 
-		} while (bError);
+			String sNombreEmpleado2 = L.leer("Nombre (Empleado 2): ");
 
-		Empleado oEmpleado1 = new Empleado(sNombreEmpleado1, sDniEmpleado1, cLetra, bAnios, bCategoria);
-		if (oEmpleado1.validaEmpleado(oEmpleado1) && controlGeneral.getEmpleadoController().addEmployee(oEmpleado1)) {
-			System.out.println("Aniadido correctamente");
-		} else {
-			System.out.println("No se pudo aniadir");
-		}
+			String sDniEmpleado2 = L.leer("Dni (Empleado 1): ");
 
-		String sNombreEmpleado2 = L.leer("Nombre (Empleado 2): ");
+			bOption = (byte) L.valida("Sexo: \nVaron: (1)\nMujer: (2)", 1, 2, 3);
 
-		String sDniEmpleado2 = L.leer("Dni (Empleado 1): ");
+			if (bOption == 1) {
+				cLetra = 'H';
+			} else if (bOption == 2) {
+				cLetra = 'M';
+			}
 
-		bOption = (byte) L.valida("Sexo: \nVaron: (1)\nMujer: (2)", 1, 2, 3);
+			Empleado oEmpleado2 = new Empleado(sNombreEmpleado2, sDniEmpleado2, cLetra);
 
-		if (bOption == 1) {
-			cLetra = 'H';
-		} else if (bOption == 2) {
-			cLetra = 'M';
-		}
+			if (oEmpleado2.validaEmpleado(oEmpleado2) && controlGeneral.getEmpleadoController().addEmployee(oEmpleado2)) {
+				System.out.println("Aniadido correctamente");
+				bMostrarPM2=true;
+			} else {
+				System.out.println("No se pudo aniadir");
+			}
+			
+			String sDniPM1 =null;
+			if (bMostrarPM1 == true) {
+				 sDniPM1 = oEmpleado1.getsDni();
 
-		Empleado oEmpleado2 = new Empleado(sNombreEmpleado2, sDniEmpleado2, cLetra);
+				Empleado oEmpleadoM1 = new Empleado(sDniPM1);
 
-		if (oEmpleado2.validaEmpleado(oEmpleado2) && controlGeneral.getEmpleadoController().addEmployee(oEmpleado2)) {
-			System.out.println("Aniadido correctamente");
-		} else {
-			System.out.println("No se pudo aniadir");
-		}
-		datosTrabajadores(oEmpleado1, oEmpleado2);
+				System.out.println(controlGeneral.getEmpleadoController().showEmployee(oEmpleadoM1));
+			}else {
+				System.out.println("No se puede mostrar un empleado que no existe con DNI: "+sDniPM1);
+			}
+			
+			String sDniPM2 =null;
+			if (bMostrarPM2 == true) {
+				 sDniPM2 = oEmpleado2.getsDni();
 
-		bError = true;
-		do {
-			try {
-				bAnios = Byte.parseByte(L.leer("Introduzca Anios (1 a 80): "));
-				if (bAnios >= 1 && bAnios <= 80) {
+				Empleado oEmpleadoM2 = new Empleado(sDniPM2);
+
+				System.out.println(controlGeneral.getEmpleadoController().showEmployee(oEmpleadoM2));
+			}else {
+				System.out.println("No se puede mostrar un empleado que no existe con DNI: "+sDniPM2);
+			}
+			
+			
+			
+			bError = true;
+			do {
+				try {
+					bAnios = Byte.parseByte(L.leer("Introduzca Anios (1 a 80): "));
+					if (bAnios >= 1 && bAnios <= 80) {
+						bError = false;
+					}
+				} catch (NumberFormatException e) {
+					System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
+					bAnios = 0;
+					bError = false;
+				} catch (Exception e) {
+					System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
+					bAnios = 0;
 					bError = false;
 				}
-			} catch (NumberFormatException e) {
-				System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
-				bAnios = 0;
-				bError = false;
-			} catch (Exception e) {
-				System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
-				bAnios = 0;
-				bError = false;
-			}
 
-		} while (bError);
+			} while (bError);
 
-		bError = true;
-		do {
-			try {
-				bCategoria = Byte.parseByte(L.leer("Introduzca Categoria (1 a 10): "));
-				if (bCategoria >= 1 && bCategoria <= 10) {
+			bError = true;
+			do {
+				try {
+					bCategoria = Byte.parseByte(L.leer("Introduzca Categoria (1 a 10): "));
+					if (bCategoria >= 1 && bCategoria <= 10) {
+						bError = false;
+					}
+				} catch (NumberFormatException e) {
+					System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
+					bCategoria = 0;
+					bError = false;
+				} catch (Exception e) {
+					System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
+					bCategoria = 0;
 					bError = false;
 				}
-			} catch (NumberFormatException e) {
-				System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
-				bCategoria = 0;
-				bError = false;
-			} catch (Exception e) {
-				System.out.println("  \n**  **  **  Datos no correctos  **  **  ** \n");
-				bCategoria = 0;
-				bError = false;
+
+			} while (bError);
+
+			oEmpleado2.setbAnyosTrabajados(bAnios);
+			oEmpleado1.setbCategoria(bCategoria);
+
+			
+			 sDniPM1 =null;
+			if (bMostrarPM1 == true) {
+				 sDniPM1 = oEmpleado1.getsDni();
+
+				Empleado oEmpleadoM1 = new Empleado(sDniPM1);
+
+				System.out.println(controlGeneral.getEmpleadoController().showEmployee(oEmpleadoM1));
+			}else {
+				System.out.println("No se puede mostrar un empleado que no existe con DNI: "+sDniPM1);
 			}
+			
+			 sDniPM2 =null;
+			if (bMostrarPM2 == true) {
+				 sDniPM2 = oEmpleado2.getsDni();
 
-		} while (bError);
+				Empleado oEmpleadoM2 = new Empleado(sDniPM2);
 
-		oEmpleado2.setbAnyosTrabajados(bAnios);
-		oEmpleado1.setbCategoria(bCategoria);
-
-		datosTrabajadores(oEmpleado1, oEmpleado2);
+				System.out.println(controlGeneral.getEmpleadoController().showEmployee(oEmpleadoM2));
+			}else {
+				System.out.println("No se puede mostrar un empleado que no existe con DNI: "+sDniPM2);
+			}
+			
+			
+			
+			
+			
+			
+		}
+		
+		System.out.println("Adios");
 
 		/*
 		 * Partiendo de la aplicación en Java desarrollada en la prueba anterior para
@@ -292,7 +354,22 @@ public class CalculaNominas {
 		 * código generando el Javadoc.
 		 */
 
-		start();
+	}
+
+	private static byte entrada() {
+		byte bOption =0;
+		
+			 bOption = (byte) L.valida("\n	Bienvenido: "
+					//
+					+ "\n\n	Entrar a la app:		(1)"
+					//
+					+ "\n	Entrar a la demo:		(2)"
+					//
+					+ "\n	Salir:				(3)", 1, 3, 3);
+			//
+		
+		
+		return bOption;
 	}
 
 	public static void start() {
@@ -319,7 +396,7 @@ public class CalculaNominas {
 							//
 							+ "\n  --Operaciones de empleados:    	(1)"
 							//
-							+ "\n  --Salir:           		(2)"
+							+ "\n  --Salir:           			(2)"
 					//
 							, 1, 2, 3);
 
@@ -340,6 +417,7 @@ public class CalculaNominas {
 
 			}
 		} while (bOption != 2);
+		entrada();
 	}
 
 	/**
@@ -347,13 +425,6 @@ public class CalculaNominas {
 	 * @param oEmpleado1 tipo: Empleado (Objeto)
 	 * @param oEmpleado2 tipo: Empleado (Objeto)
 	 */
-	private static void datosTrabajadores(Empleado oEmpleado1, Empleado oEmpleado2) {
-		String sSueldo = "  --Sueldo : ";
-		System.out.println(oEmpleado1.imprimeEmpleado(oEmpleado1));
-		System.out.println(sSueldo + Nomina.sueldo(oEmpleado1));
-		System.out.println(oEmpleado2.imprimeEmpleado(oEmpleado2));
-		System.out.println(sSueldo + Nomina.sueldo(oEmpleado2));
-
-	}
+	
 
 }

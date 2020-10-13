@@ -12,7 +12,7 @@ public interface IEmpleado {
 
 	public boolean incrAnyo();
 
-	public String imprimeEmpleado(Empleado oEmpleado);
+	public String toString();
 
 	public boolean validaEmpleado(Empleado oEmpleado);
 

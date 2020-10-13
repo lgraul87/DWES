@@ -114,10 +114,10 @@ public class Empleado extends Persona implements IEmpleado{
 	 * @return tipo: String
 	 */
 	@Override
-	public String imprimeEmpleado(Empleado oEmpleado) {
+	public String toString() {
 
 		return "##############################################################" + "\n  --Empleado: \n"
-				+ Empleado.super.sImprime(super.sDni)
+				+ super.toString()
 				//
 				+ "\n  --Sexo: " + super.cLetra
 				//

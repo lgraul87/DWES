@@ -7,8 +7,9 @@ import java.sql.Statement;
 import controlador.database.ConexionDB;
 
 import modelo.laboral.Empleado;
+import modelo.laboral.Nomina;
 
-public class EmpleadoController implements IEmpleadoController{
+public class EmpleadoController implements IEmpleadoController {
 
 	@Override
 	public boolean addEmployee(Empleado oEmpleado1) {
@@ -21,7 +22,7 @@ public class EmpleadoController implements IEmpleadoController{
 		byte bCategoria = oEmpleado1.getbCategoria();
 		byte bAnio = oEmpleado1.getbAnyosTrabajados();
 
-		String sql = "SELECT DNI FROM EMPLEADO WHERE DNI = '" + sDni + "'";
+		String sql = "SELECT COUNT(*) FROM EMPLEADO WHERE DNI = '" + sDni + "'";
 
 		if (ConexionDB.executeCount(sql) == 0) {
 
@@ -29,12 +30,17 @@ public class EmpleadoController implements IEmpleadoController{
 					+ "','" + cLetra + "')";
 
 			ConexionDB.executeUpdate(sql2);
+
+			String sqlSalary = "INSERT INTO NOMINA VALUES (" + Nomina.setSalaryDB(bCategoria, bAnio) + ",'" + sDni + "');";
+			ConexionDB.executeUpdate(sqlSalary);
 			bExito = true;
 
 		}
 		return bExito;
 
 	}
+
+	
 
 	@Override
 	public String showAll() {
@@ -66,7 +72,8 @@ public class EmpleadoController implements IEmpleadoController{
 					bAnios = resultSet.getByte("anio");
 
 					sResultado += "  --Nombre: " + sNombre + "  --Dni: '" + sDni + "'  --Sexo: " + sLetra
-							+ "  --Categoria: " + bCategoria + "  --Anios: " + bAnios + "\n";
+							+ "  --Categoria: " + bCategoria + "  --Anios: " + bAnios + ""
+									+ "\n  --Sueldo: "+getSalaryDB(sDni)+"\n";
 
 				}
 				resultSet.close();
@@ -106,7 +113,8 @@ public class EmpleadoController implements IEmpleadoController{
 				bAnios = resultSet.getByte("anio");
 
 				sResultado = "  --Nombre: " + sNombre + "  --Dni: '" + sDni + "'  --Sexo: " + sLetra + "  --Categoria: "
-						+ bCategoria + "  --Anios: " + bAnios + "\n";
+						+ bCategoria + "  --Anios: " + bAnios + ""
+								+ "\nSueldo: "+getSalaryDB(sDni)+"\n";
 
 			}
 			resultSet.close();
@@ -118,6 +126,10 @@ public class EmpleadoController implements IEmpleadoController{
 
 		return sResultado;
 	}
+
+	
+
+
 
 	@Override
 	public boolean editEmployee(Empleado oEmpleado, Empleado oEmpleadoModificado) {
@@ -200,7 +212,7 @@ public class EmpleadoController implements IEmpleadoController{
 	public boolean upDateSalary(Empleado oEmpleado, Empleado oEmpleadoEditado) {
 
 		boolean bExito = false;
-		
+
 		String sDniBuscador = oEmpleado.getsDni();
 
 		String sql = "SELECT COUNT(*) FROM EMPLEADO WHERE DNI = '" + sDniBuscador + "'";
@@ -210,6 +222,30 @@ public class EmpleadoController implements IEmpleadoController{
 		}
 		return bExito;
 
+	}
+	public float getSalaryDB(String sDni) {
+		float fResultado = 0;
+		String sql = "SELECT SUELDO FROM NOMINA WHERE DNI = '"+sDni+"';";
+		try {
+			Statement statement = ConexionDB.getConnection().createStatement();
+			ResultSet resultSet = statement.executeQuery(sql);
+
+			while (resultSet.next()) {
+
+				float fSueldo = resultSet.getFloat("sueldo");
+				
+
+				 fResultado =fSueldo;
+
+			}
+			resultSet.close();
+			statement.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return fResultado;
 	}
 
 }

@@ -14,6 +14,6 @@ public interface Ipersona {
 
 	public void setcLetra(char cLetra);
 
-	public String sImprime(String sDni);
+	public String toString();
 
 }

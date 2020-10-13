@@ -4,7 +4,6 @@ import controlador.database.GeneralController;
 import lib.L;
 import modelo.laboral.Empleado;
 
-
 public class AltaEmpleadoView {
 
 	public static void seleccionOperaciones(GeneralController controlGeneral) {
@@ -20,15 +19,15 @@ public class AltaEmpleadoView {
 					//
 					+ "\n"
 					//
-					+ "\n  --Empleado (Aniadir nuevo): 	(1)"
+					+ "\n  --Empleado (Aniadir nuevo): 		(1)"
 					//
-					+ "\n  --Empleado (Mostrar Datos): 	(1)"
+					+ "\n  --Empleado (Mostrar Datos): 		(2)"
 					//
-					+ "\n  --Empleado (Modificar Datos): 	(1)"
+					+ "\n  --Empleado (Modificar Datos): 	(3)"
 					//
-					+ "\n  --Empleado (Actualizar sueldo): 	(1)"
+					+ "\n  --Empleado (Actualizar sueldo): 	(4)"
 					//
-					+ "\n  --Salir: (5)", 1, 5, 3);
+					+ "\n  --Atras: 				(5)", 1, 5, 3);
 			//
 
 			if (bOption == 1) {
@@ -58,11 +57,11 @@ public class AltaEmpleadoView {
 					//
 					+ "\n  --Empleado (Sin experiencia y categoria 1): 	(1)"
 					//
-					+ "\n  --Empleado (Con Experiencia): 	(2)"
+					+ "\n  --Empleado (Con Experiencia): 		(2)"
 					//
-					+ "\n  --Empleado (Grupo): 	(3)"
+					+ "\n  --Empleado (Grupo): 				(3)"
 					//
-					+ "\n  --Salir: (4)", 1, 4, 3);
+					+ "\n  --Atras: 					(4)", 1, 4, 3);
 			//
 
 			if (bOption == 1) {
@@ -72,7 +71,7 @@ public class AltaEmpleadoView {
 			} else if (bOption == 3) {
 				addGroup(controlGeneral);
 			}
-		} while (bOption != 3);
+		} while (bOption != 4);
 	}
 
 	private static void addGroup(GeneralController controlGeneral) {
@@ -85,13 +84,16 @@ public class AltaEmpleadoView {
 	}
 
 	private static void addEmployeeE(GeneralController controlGeneral) {
+		
+		String sResultado = "No se pudo aniadir el empleado";
+		
 		byte bAnios;
 		byte bCategoria;
 		char cLetra = 0;
 
-		String sNombreEmpleado = L.leer("Nombre (Empleado 1): ");
+		String sNombreEmpleado = L.leer("Nombre (Empleado): ");
 
-		String sDniEmpleado = L.leer("Dni (Empleado 1): ");
+		String sDniEmpleado = L.leer("Dni (Empleado): ");
 
 		byte bOption = (byte) L.valida("Sexo: \nVaron: (1)\nMujer: (2)", 1, 2, 3);
 
@@ -142,16 +144,22 @@ public class AltaEmpleadoView {
 
 		Empleado oEmpleado = new Empleado(sNombreEmpleado, sDniEmpleado, cLetra, bAnios, bCategoria);
 
-		controlGeneral.getEmpleadoController().addEmployee(oEmpleado);
+		if (controlGeneral.getEmpleadoController().addEmployee(oEmpleado)) {
+			sResultado = "El empleado se aniadio";
+		}
+
+		System.out.println(sResultado);
 	}
+
 
 	private static void addEmployeeNE(GeneralController controlGeneral) {
 
+		String sResultado = "No se pudo aniadir el empleado";
 		char cLetra = 0;
 
-		String sNombreEmpleado = L.leer("Nombre (Empleado 2): ");
+		String sNombreEmpleado = L.leer("Nombre (Empleado): ");
 
-		String sDniEmpleado = L.leer("Dni (Empleado 1): ");
+		String sDniEmpleado = L.leer("Dni (Empleado): ");
 
 		byte bOption = (byte) L.valida("Sexo: \nVaron: (1)\nMujer: (2)", 1, 2, 3);
 
@@ -162,8 +170,11 @@ public class AltaEmpleadoView {
 		}
 
 		Empleado oEmpleado = new Empleado(sNombreEmpleado, sDniEmpleado, cLetra);
-		controlGeneral.getEmpleadoController().addEmployee(oEmpleado);
+		if (controlGeneral.getEmpleadoController().addEmployee(oEmpleado)) {
+			sResultado = "El empleado se aniadio";
+		}
 
+		System.out.println(sResultado);
 	}
 
 	private static void checkEmployee(GeneralController controlGeneral) {
@@ -183,7 +194,7 @@ public class AltaEmpleadoView {
 					//
 					+ "\n  --Empleados (Todos): 	(2)"
 					//
-					+ "\n  --Salir: (3)", 1, 3, 3);
+					+ "\n  --Atras: (3)", 1, 3, 3);
 			//
 
 			if (bOption == 1) {
@@ -289,7 +300,7 @@ public class AltaEmpleadoView {
 					//
 					+ "\n  --Empleados (Actualizar todos): 	(2)"
 					//
-					+ "\n  --Salir: (3)", 1, 3, 3);
+					+ "\n  --Atras: (3)", 1, 3, 3);
 			//
 
 			if (bOption == 1) {

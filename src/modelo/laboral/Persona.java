@@ -111,8 +111,10 @@ public class Persona implements INomina, Ipersona {
 	 * @return tipo: String
 	 */
 	@Override
-	public String sImprime(String sDni) {
+	public String toString() {
 		return "  --Nombre: " + this.sNombre + "  --Dni: " + this.sDni;
 	}
+
+	
 
 }
